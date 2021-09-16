@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>C79</title>
+        <style>
+            img, label, #sort, #del{
+                visibility: hidden;
+            }
+            label{
+                max-width: 80%;
+            }
+            center{
+                margin-top:10px;
+            }
+        </style>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <center class="container bg-info">
+            <h1 class="text-primary">Student Input</h1>
+            <ol>
+                <li>
+                    <input  type="text" id="i1" placeholder="First Student Name">
+                </li><br>
+                <li>
+                    <input  type="text" id="i2" placeholder="Second Student Name">
+                </li><br>
+                <li>
+                    <input  type="text" id="i3" placeholder="Third Student Name">
+                </li><br>
+                <li>
+                    <input  type="text" id="i4" placeholder="Fourth Student Name">
+                </li><br>
+                <li>
+                    <input  type="text" id="i5" placeholder="Fifth Student Name">
+                </li>
+            </ol>
+            <label id="display"></label><br>
+            <img src="loader.gif">
+            <button id="submit">Submit</button>
+            <button id="sort">Sort</button><button id="del">Delete All</button>
+        </center>
+    </body>
+    <script>
+        var arr=[];
+        var dis = $("#display");
+        var delBefore = false;
+        $("#submit").click(function(){
+            $("img").css("visibility", "visible");
+            for(var i=0;i<6;i++){
+                arr.push($("#i"+i).val());
+            }
+            dis.text(arr);
+            if(delBefore){
+                dis.show();
+            }else{
+                dis.css("visibility", "visible");
+            }
+            
+            $("#sort").css("visibility", "visible");
+            $("#del").css("visibility", "visible");
+            $("img").hide();
+        })
+        $("#sort").click(function(){
+            $("img").css("visibility", "visible");
+            dis.hide();
+            arr.sort();
+            dis.text(arr);
+            dis.show();
+            $("img").hide();
+        })
+        $("#del").click(function(){
+            $("img").css("visibility", "visible");
+            dis.hide();
+            arr = []
+            delBefore = true;
+            dis.text(arr);
+            $("img").hide();
+        })
+    </script>
+</html>
